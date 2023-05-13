@@ -47,9 +47,6 @@ def add_to_context_menu():
     # Set the command to run when the entry is clicked
     command_key = winreg.CreateKey(key, 'command')
     winreg.SetValueEx(command_key, '', 0, winreg.REG_SZ, f'"{exe_path}" "%1" scan')
-    # Set the icon for the entry
-    icon_key = winreg.CreateKey(key, 'icon')
-    winreg.SetValueEx(icon_key, '', 0, winreg.REG_SZ, f'"{exe_path}",0')
     # Close the registry keys
     winreg.CloseKey(command_key)
     winreg.CloseKey(icon_key)
@@ -60,7 +57,7 @@ def main():
     if len(sys.argv) == 3 and sys.argv[2] == 'scan':
         # If the script is called from the context menu, scan the file and show the results
         file_path = sys.argv[1]
-        print(f'Scanning {file_path}...')
+        print(f'Scanning {file_path}')
         scan_and_show_results(file_path)
     else:
         # If the script is run without arguments, add the context menu entry
