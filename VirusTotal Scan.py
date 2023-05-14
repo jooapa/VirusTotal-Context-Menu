@@ -49,7 +49,6 @@ def add_to_context_menu():
     winreg.SetValueEx(command_key, '', 0, winreg.REG_SZ, f'"{exe_path}" "%1" scan')
     # Close the registry keys
     winreg.CloseKey(command_key)
-    winreg.CloseKey(icon_key)
     winreg.CloseKey(key)
 
 
